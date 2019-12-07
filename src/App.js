@@ -1,5 +1,5 @@
 import React from "react";
-import brofist from "../public/brofist.png";
+import brofist from "./assets/img/brofist.png";
 import "./App.css";
 
 function App() {
