@@ -1,0 +1,8 @@
+{
+  "name": "websockets",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:a36168120/websockets.git",
+  "author": "<jonacom@lissismore.com>",
+  "license": "MIT",
+}
