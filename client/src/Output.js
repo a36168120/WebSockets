@@ -8,12 +8,18 @@ class Output extends Component {
     this.state = {
       socket: socketIOClient("http://127.0.0.1:4000"),
       mouseX: 0,
-      mouseY: 0
+      mouseY: 0,
+      backgroundColor: 'white'
     };
   }
   render() {
-    this.state.socket.on("Output", mouseData => {
+    this.state.socket.on("Output mouse data", mouseData => {
       this.setState({ mouseX: mouseData.mouseX, mouseY: mouseData.mouseY });
+    });
+
+    this.state.socket.on("Output change color", color => {
+      document.body.style.backgroundColor = color;
+      this.setState({ backgroundColor: color });
     });
 
     const styles = {

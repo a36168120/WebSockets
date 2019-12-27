@@ -9,12 +9,13 @@ class Input extends Component {
       socket: socketIOClient("http://127.0.0.1:4000"),
       color: "red",
       mouseX: 0,
-      mouseY: 0
+      mouseY: 0,
+      lastCheck: new Date().getTime()
     };
   }
 
   send = () => {
-    this.state.socket.emit("input", this.state.color); // change 'red' to this.state.color
+    this.state.socket.emit("Input change color", this.state.color); // change 'red' to this.state.color
   };
 
   mouseMove = event => {
@@ -22,17 +23,23 @@ class Input extends Component {
     // console.log("Y:", event.pageY);
     // this.setState({ mouseX: event.pageX });
     // this.setState({ mouseY: event.pageY });
-    this.state.socket.emit("Input", {
-      mouseX: event.pageX,
-      mouseY: event.pageY
-    });
+
+      // console.log(new Date().getTime() - this.state.lastCheck)
+      // if (new Date().getTime() - this.state.lastCheck >= 100) {
+      //     this.state.socket.emit("Input", {
+      //         mouseX: event.pageX,
+      //         mouseY: event.pageY
+      //     });
+      //     this.setState({ lastCheck: new Date().getTime()});
+      // }
+
   };
 
   render() {
-    // this.state.socket.on("change color", color => {
-    //   document.body.style.backgroundColor = color;
-    //   this.setState({ color: color });
-    // });
+    this.state.socket.on("Output change color", color => {
+      // document.body.style.backgroundColor = color;
+      this.setState({ color: color });
+    });
 
     const styles = {
       mouseBoxStyle: {
