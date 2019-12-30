@@ -7,25 +7,24 @@ const app = express();
 app.use(index);
 const server = http.createServer(app);
 const io = socketIo(server);
-const output = io.of("/output");
 
 io.on("connection", socket => {
   console.log("New client connected");
   socket.on("disconnect", () => console.log("Client disconnected"));
-  // socket.on("change color", color => {
-  //   if (color === "red") {
-  //     color = "blue";
-  //   } else {
-  //     color = "red";
-  //   }
-  // io.sockets.emit("change color", color);
-  // });
-  socket.on("Input", mouseData => {
+  socket.on("Input change color", color => {
+    if (color === "red") {
+      color = "blue";
+    } else {
+      color = "red";
+    }
+      console.log(`Got color: ${color}`)
+    io.emit("Output change color", color);
+  });
+
+  socket.on("Input mouse data", mouseData => {
     console.log(mouseData);
-    io.emit("Output", mouseData);
+    io.emit("Output mouse data", mouseData);
   });
 });
-
-// io.on("change color", socket => console.log("it worked"));
 
 server.listen(port, () => console.log(`Listening on port ${port}`));
