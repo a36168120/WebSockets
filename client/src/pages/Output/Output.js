@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import socketIOClient from "socket.io-client";
-import "./App.css";
 
 class Output extends Component {
   constructor(props) {
@@ -9,7 +8,7 @@ class Output extends Component {
       socket: socketIOClient("http://127.0.0.1:4000"),
       mouseX: 0,
       mouseY: 0,
-      backgroundColor: 'white'
+      backgroundColor: "white"
     };
   }
   render() {

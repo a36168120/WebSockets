@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import socketIOClient from "socket.io-client";
-import "./App.css";
 
 class Input extends Component {
   constructor() {
@@ -23,16 +22,14 @@ class Input extends Component {
     // console.log("Y:", event.pageY);
     // this.setState({ mouseX: event.pageX });
     // this.setState({ mouseY: event.pageY });
-
-      // console.log(new Date().getTime() - this.state.lastCheck)
-      // if (new Date().getTime() - this.state.lastCheck >= 100) {
-      //     this.state.socket.emit("Input", {
-      //         mouseX: event.pageX,
-      //         mouseY: event.pageY
-      //     });
-      //     this.setState({ lastCheck: new Date().getTime()});
-      // }
-
+    // console.log(new Date().getTime() - this.state.lastCheck)
+    // if (new Date().getTime() - this.state.lastCheck >= 100) {
+    //     this.state.socket.emit("Input", {
+    //         mouseX: event.pageX,
+    //         mouseY: event.pageY
+    //     });
+    //     this.setState({ lastCheck: new Date().getTime()});
+    // }
   };
 
   render() {
